@@ -36,7 +36,7 @@
                 <span>{{ todo.content }}</span>
                 <!-- 刪除待辦事項 -->
                 <a href="#"  v-if="change === 'all'" @click.prevent="deleteTodo(todo.id)">
-                    X
+                    刪除
                 </a>
                 </label>
                 <div class="editBox">
@@ -348,17 +348,36 @@ nav ul a span {
 }
 
 .todoList_label span {
-  text-align: center;
-  flex-grow: 1; /* 讓文字占據可用空間，這樣可以讓它居中 */
+  flex-grow: 1; /* 讓文字區域自動填充可用空間 */
+  margin-left: 10px; 
+  margin-right: 10px; 
+  text-align: left; 
+  word-break: break-word; /* 長文本會自動換行 */
 }
 
-
+.todoList_label a {
+  display: inline-block;
+  width: 40px; 
+  height: 30px; 
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  color: #fff; 
+  background-color: #333333; 
+  border-radius: 5px;
+  margin-left: 10px;
+  flex-shrink: 0; 
+  flex-grow: 0; 
+}
 .todoList_list .todoList_items .todoList_input {
   width: 20px;
   height: 20px;
   border: 1px solid #9F9A91;
   border-radius: 5px;
   margin-right: 16px;
+  flex-shrink: 0; 
+  flex-grow: 0; 
 }
 
 
@@ -379,17 +398,7 @@ nav ul a span {
   margin-bottom: 17px;
 }
 
-.todoList_list .todoList_items li a {
-  margin-left: 17px;
-  display: block;
-  font-size: 14px;
-  color: #333333;
-  opacity: 0;
-}
 
-.todoList_list .todoList_items li:hover a {
-  opacity: 1;
-}
 
 .todoList_list .todoList_statistics {
   display: -webkit-box;
@@ -416,9 +425,9 @@ nav ul a span {
   align-items: center;
   justify-content:  flex-start;
   margin-left: 10px;
-  gap: 10px; /* 添加按鈕之間的間距 */
-  flex-grow: 0; /* 防止按鈕過度擴展 */
-  margin-left: 2.1rem; /* 讓按鈕和清單文字對齊開頭 */
+  gap: 10px; 
+  flex-grow: 0; 
+  margin-left: 2.1rem; 
   margin-top: 5px;
 }
 
@@ -446,7 +455,7 @@ nav ul a span {
   height: 20px;
   border: 1px solid #9F9A91;
   border-radius: 5px;
-  /* margin-right: 16px;  */
+ 
 }
 
 .todoList_item li{
@@ -456,8 +465,5 @@ nav ul a span {
   margin-bottom: 17px;
   flex-wrap: wrap; /* 允許項目在需要時換行 */
 }
-
-
-
 
 </style>
