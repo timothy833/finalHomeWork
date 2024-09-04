@@ -36,7 +36,7 @@
                 <span>{{ todo.content }}</span>
                 <!-- 刪除待辦事項 -->
                 <a href="#"  v-if="change === 'all'" @click.prevent="deleteTodo(todo.id)">
-                    x
+                    X
                 </a>
                 </label>
                 <div class="editBox">
@@ -48,7 +48,7 @@
                 </div>
             </li>
             </ul>
-            <div class="todoList_statistics">
+            <div v-if="change === 'all'" class="todoList_statistics">
             <p>{{ pendingCount }} 個待完成項目</p>
             </div>
         </div>
@@ -146,7 +146,7 @@ const toggleEditing = (todo) => {
 }
 
 .vhContainer {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 nav {
@@ -342,7 +342,16 @@ nav ul a span {
   padding-bottom: 15px;
   color: #333333;
   line-height: 20.27px;
+  word-break: break-word; 
+  white-space: normal; 
+  justify-content: space-between;
 }
+
+.todoList_label span {
+  text-align: center;
+  flex-grow: 1; /* 讓文字占據可用空間，這樣可以讓它居中 */
+}
+
 
 .todoList_list .todoList_items .todoList_input {
   width: 20px;
@@ -351,6 +360,7 @@ nav ul a span {
   border-radius: 5px;
   margin-right: 16px;
 }
+
 
 .todoList_list .todoList_items .todoList_input:checked ~ span {
   color: #9F9A91;
@@ -409,6 +419,7 @@ nav ul a span {
   gap: 10px; /* 添加按鈕之間的間距 */
   flex-grow: 0; /* 防止按鈕過度擴展 */
   margin-left: 2.1rem; /* 讓按鈕和清單文字對齊開頭 */
+  margin-top: 5px;
 }
 
 .editBox button{
@@ -418,6 +429,7 @@ nav ul a span {
   border-radius: 5px;
   padding: 8px 12px;
   cursor: pointer;
+  margin-top: 5px;
 
 }
 
@@ -426,6 +438,7 @@ nav ul a span {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-top: 5px;
 }
 
 .todoList_input {
@@ -433,7 +446,7 @@ nav ul a span {
   height: 20px;
   border: 1px solid #9F9A91;
   border-radius: 5px;
-  margin-right: 16px; /* 確保與文本之間的間距一致 */
+  /* margin-right: 16px;  */
 }
 
 .todoList_item li{
@@ -444,14 +457,7 @@ nav ul a span {
   flex-wrap: wrap; /* 允許項目在需要時換行 */
 }
 
-.todoList_label { 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  word-break: break-word; /* 讓內容在需要時換行 */
-  white-space: normal; /* 允許文字換行 */
-  margin-bottom: 10px; /* 給按鈕留出空間 */
-}
+
 
 
 </style>

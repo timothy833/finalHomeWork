@@ -82,7 +82,7 @@ html {
 body {
   font-family: "Noto Sans TC";
   margin: 0 auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 img {

@@ -65,7 +65,7 @@ export const useUserStore = defineStore('user', {
             Authorization: this.token,
           },
         });
-        console.log(res.data);
+        console.log(res.data, '新增待辦事項成功');
         addTodoItem = ''; // 清空輸入框
         this.fetchTodos();
       } catch (error) {
@@ -80,7 +80,7 @@ export const useUserStore = defineStore('user', {
             Authorization: this.token,
           },
         });
-        console.log(res.data);
+        console.log(res.data, '刪除待辦事項成功');
         this.todos = this.todos.filter(todo => todo.id !== id);
       } catch (error) {
         console.error("刪除待辦事項失敗", error);
@@ -118,6 +118,7 @@ export const useUserStore = defineStore('user', {
         console.log(res.data);
         const todo = this.todos.find(todo => todo.id === id);
         todo.status = !todo.status;
+        console.log(res.data, '切換待辦事項成功');
       } catch (error) {
         console.error("切換待辦事項狀態失敗", error);
       }
