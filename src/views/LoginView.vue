@@ -204,18 +204,6 @@ const handleSignIn = async () => {
   outline: 3px solid #fff;
 }
 
-/* .formControls .formControls_input::-webkit-input-placeholder {
-  color: #9F9A91;
-}
-
-.formControls .formControls_input:-ms-input-placeholder {
-  color: #9F9A91;
-}
-
-.formControls .formControls_input::-ms-input-placeholder {
-  color: #9F9A91;
-} */
-
 .formControls .formControls_input::placeholder {
   color: #9F9A91;
 }
@@ -245,6 +233,13 @@ const handleSignIn = async () => {
   font-weight: bold;
   text-decoration: none;
   text-align: center;
+}
+
+
+.formControls span {
+  margin: 4px 0 16px 0;
+  color: #d87355;
+  font-size: 0.875rem;
 }
 
 </style>
