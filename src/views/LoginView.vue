@@ -10,11 +10,11 @@
         <h2 class="formControls_txt">最實用的線上代辦事項服務</h2>
         <label class="formControls_label" for="loginEmail">Email</label>
         <input v-model="signInEmail" class="formControls_input" type="email" id="loginEmail" name="email" placeholder="請輸入 email" required>
-        <span v-if="loginError">請輸入正確Email內容</span>
+        <span v-if="loginError">請輸入正確Email</span>
         
         <label class="formControls_label" for="loginPwd">密碼</label>
         <input v-model="signInPassword" class="formControls_input" type="password" name="pwd" id="loginPwd" placeholder="請輸入密碼" required>
-        
+        <span v-if="loginError">請輸入正確密碼</span>
         <input class="formControls_btnSubmit" type="submit" value="登入">
         <router-link class="formControls_btnLink" to="/signup">註冊帳號</router-link>
         </form>
