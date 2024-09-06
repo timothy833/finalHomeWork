@@ -61,17 +61,17 @@ table {
 
 * {
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  /* -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; */
 }
 
 *, *::before, *::after {
-  -webkit-box-sizing: border-box;
+  /* -webkit-box-sizing: border-box; */
           box-sizing: border-box;
 }
 
 .selector-for-some-widget {
-  -webkit-box-sizing: content-box;
+  /* -webkit-box-sizing: content-box; */
           box-sizing: content-box;
 }
 
@@ -82,12 +82,12 @@ html {
 body {
   font-family: "Noto Sans TC";
   margin: 0 auto;
-  /* overflow: hidden; */
 }
 
 img {
   width: 100%;
-  vertical-align: middle;
+  height: auto; /* 保持圖片的寬高比 */
+  /* vertical-align: middle; */
 }
 
 

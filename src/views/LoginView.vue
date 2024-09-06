@@ -10,7 +10,7 @@
         <h2 class="formControls_txt">最實用的線上代辦事項服務</h2>
         <label class="formControls_label" for="loginEmail">Email</label>
         <input v-model="signInEmail" class="formControls_input" type="email" id="loginEmail" name="email" placeholder="請輸入 email" required>
-        <span v-if="loginError">此欄位不可留空</span>
+        <span v-if="loginError">請輸入正確Email內容</span>
         
         <label class="formControls_label" for="loginPwd">密碼</label>
         <input v-model="signInPassword" class="formControls_input" type="password" name="pwd" id="loginPwd" placeholder="請輸入密碼" required>
@@ -27,6 +27,7 @@
 import { ref } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 const store = useUserStore();
 const router = useRouter();
 
@@ -36,11 +37,47 @@ const router = useRouter();
 const signInEmail = ref('');
 const signInPassword = ref('');
 const loginError = ref(false);
+const signIn = async (email, password, loginError) => {
+  try {
+        const res = await axios.post(`${store.api}/users/sign_in`, {
+          email: email,
+          password: password,
+        });
+        store.token = res.data.token;
+        console.log(store.token, '有加入token');
+        localStorage.setItem('token', store.token); // 儲存 token
+        await checkout(); 
+      } catch (error) {
+        console.error("登入失敗", error);
+        loginError.value = true;
+        alert("登入失敗");
+      }
+}
+
+
+const checkout = async () => {
+        try {
+          const res = await axios.get(`${store.api}/users/checkout`, {
+            headers: {
+              Authorization: store.token
+            },
+          });
+          console.log(res.data);
+          // console.log(res.data.)
+          store.userName = res.data.nickname;
+          localStorage.setItem('userName',  store.userName);
+          if(res.data.status === true) {
+            alert("登入驗證成功");
+            router.push('/todolist')
+            store.fetchTodos();
+          }
+        } catch (error) {
+          console.error("驗證失敗", error);
+        }
+      }; 
   
 const handleSignIn = async () => {
-    await store.signIn(signInEmail.value, signInPassword.value, loginError)
-    await store.fetchTodos()
-    await router.push('/todolist')
+    await signIn(signInEmail.value, signInPassword.value, loginError);
 }
   
   
@@ -56,30 +93,35 @@ const handleSignIn = async () => {
 .container {
   margin: 0 auto;
   padding: 87px 32px;
+  /* padding: 40px 20px;  */
 }
 
 @media (max-width: 576px) {
   .container {
     padding: 18px 32px;
+    max-width: 100%;
   }
+
+  .loginPage {
+    flex-direction: column; /* 修正：在小螢幕設備上堆疊內容 */
+    justify-content: start; 
+    height: 100vh; /* 讓頁面內容在螢幕上居中並充滿視窗 */
+  }
+
 }
 
 
 .loginPage {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 800px;
-}
-
-.vhContainer {
-  height: 100vh;
+  /* -webkit-box-pack: justify;
+      -ms-flex-pack: justify; */
+          /* justify-content: space-between; */
+  /* -webkit-box-align: center;
+      -ms-flex-align: center; */
+  align-items: center;
+  justify-content: center;
 }
 
 .vhContainer {
@@ -88,21 +130,24 @@ const handleSignIn = async () => {
 
 .side {
   width: 386px;
-  -webkit-box-orient: vertical;
+  /* display: flex; */
+  /* -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+      -ms-flex-direction: column; */
+          /* flex-direction: column; */
+  /* -webkit-box-pack: center;
+      -ms-flex-pack: center; */
+          /* justify-content: center; */
+  /* -webkit-box-align: center;
+      -ms-flex-align: center; */
+          /* align-items: center; */
 }
 
 .logoImg {
   margin-bottom: 16px;
 }
+
+
 
 @media (max-width: 576px) {
   .d-m-n {
@@ -112,12 +157,12 @@ const handleSignIn = async () => {
 
 .formControls {
   margin-left: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
   display: flex;
-  -webkit-box-orient: vertical;
+  /* -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
+      -ms-flex-direction: column; */
           flex-direction: column;
 }
 
@@ -159,7 +204,7 @@ const handleSignIn = async () => {
   outline: 3px solid #fff;
 }
 
-.formControls .formControls_input::-webkit-input-placeholder {
+/* .formControls .formControls_input::-webkit-input-placeholder {
   color: #9F9A91;
 }
 
@@ -169,7 +214,7 @@ const handleSignIn = async () => {
 
 .formControls .formControls_input::-ms-input-placeholder {
   color: #9F9A91;
-}
+} */
 
 .formControls .formControls_input::placeholder {
   color: #9F9A91;
@@ -177,13 +222,14 @@ const handleSignIn = async () => {
 
 .formControls .formControls_btnSubmit {
   width: 128px;
+  /* width: 80%; */
   height: 48px;
   border: none;
   border-radius: 10px;
   background: #333333;
   color: #fff;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
+  /* -ms-flex-item-align: center;
+      -ms-grid-row-align: center; */
       align-self: center;
   margin: 24px 0;
   font-weight: bold;

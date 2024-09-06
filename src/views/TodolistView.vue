@@ -3,6 +3,7 @@
     <nav>
     <h1><a href="#">ONLINE TODO LIST</a></h1>
     <ul>
+        <li> <a href="#"><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></a></li>
         <li class="todo_sm"><span>{{ store.userName }}</span></li>
         <li><a href="#" @click.prevent="signOut">登出</a></li>
     </ul>
@@ -58,16 +59,14 @@
 </div>
 </template>
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted} from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import { useRouter } from 'vue-router';
 
 const store = useUserStore();
 
 onMounted(() => {
-  console.log("Fetching todos...");
-  store.fetchTodos()
-  console.log("Todos fetched:", store.todos);
+ store.initTodolist();
 });
 
 const router = useRouter();
@@ -132,6 +131,16 @@ const toggleEditing = (todo) => {
 <style scoped>
 .bg-half {
   background-image: linear-gradient(175deg, #FFD370 60%, #fff 40%);
+}
+
+.logoImg {
+  margin-bottom: 16px;
+  position: absolute;
+  margin: 25px;
+  top: 0;
+  left: 0;;
+  width: 300px;
+  height: auto;
 }
 
 .container {

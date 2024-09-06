@@ -9,36 +9,13 @@ export const useUserStore = defineStore('user', {
     api: 'https://todolist-api.hexschool.io',
   }),
   actions: {
-    async signIn(email, password, loginError) {
-      try {
-        const res = await axios.post(`${this.api}/users/sign_in`, {
-          email: email,
-          password: password,
-        });
-        this.token = res.data.token;
-        console.log(this.token, '有加入token');
-        localStorage.setItem('token', this.token); // 儲存 token
-        await this.checkout();
-        await this.fetchTodos();
-        alert("登入驗證成功");
-      } catch (error) {
-        console.error("登入失敗", error);
-        loginError.value = true;
-        alert("登入失敗");
-      }
-    },
-
-    async checkout() {
-      try {
-        const res = await axios.get(`${this.api}/users/checkout`, {
-          headers: {
-            Authorization: this.token,
-          },
-        });
-        console.log(res.data);
-        this.userName = res.data.nickname;
-      } catch (error) {
-        console.error("驗證失敗", error);
+    initTodolist() {
+      const token = localStorage.getItem('token');
+      const userName = localStorage.getItem('userName');
+      if(token && userName){
+        this.token = token;
+        this.userName = userName;
+        this.fetchTodos();
       }
     },
 
@@ -133,6 +110,8 @@ export const useUserStore = defineStore('user', {
         });
         console.log("登出成功");
         localStorage.removeItem('token');
+        localStorage.removeItem('userName');
+        alert("登出成功")
       } catch (error) {
         console.error("登出失敗", error);
       }
