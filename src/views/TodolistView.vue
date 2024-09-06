@@ -25,7 +25,7 @@
         </ul>
 
         <div v-if="store.todos.length === 0" class="empty-message">
-            尚未新增待辦事項
+            目前尚無待辦事項
         </div>
         <div v-else class="todoList_items">
             <ul class="todoList_item">
