@@ -50,7 +50,7 @@ const signIn = async (email, password, loginError) => {
       } catch (error) {
         console.error("登入失敗", error);
         loginError.value = true;
-        alert("登入失敗");
+        alert("登入失敗","Email或密碼錯誤");
       }
 }
 
