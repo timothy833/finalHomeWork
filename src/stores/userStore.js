@@ -76,7 +76,6 @@ export const useUserStore = defineStore('user', {
         console.log(res.data);
         todo.content = updateItem;
         todo.isEditing = false;
-        updateItem = '';
         alert("更新待辦事項成功");
         this.fetchTodos();
       } catch (error) {

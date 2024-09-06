@@ -121,10 +121,6 @@ const signOut = async () => {
 
 const toggleEditing = (todo) => {
     todo.isEditing = !todo.isEditing;
-     // 當進入编辑模式时，將當前的内容赋值给 updateContent
-    if (todo.isEditing) {
-        todo.updateContent = ref('');
-    }
 };
 
 </script>
