@@ -3,7 +3,7 @@
     <nav>
     <h1><a href="#">ONLINE TODO LIST</a></h1>
     <ul>
-        <li> <a href="#"><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></a></li>
+        <li><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></li>
         <li class="todo_sm"><span>{{ store.userName }}</span></li>
         <li><a href="#" @click.prevent="signOut">登出</a></li>
     </ul>
@@ -78,6 +78,7 @@ const change = ref("all"); // 'all', 'pending', 'completed'
 // 新增待辦事項函數
 const addTodo = async () => {
   await store.addTodo(addTodoItem.value);
+  addTodoItem.value = '';
 };
 
 // 刪除待辦事項函數
@@ -323,7 +324,7 @@ nav ul a span {
 
 .empty-message {
   text-align: center;
-  margin-top: 20px;
+  padding: 20px;
   color: #555;
 }
 

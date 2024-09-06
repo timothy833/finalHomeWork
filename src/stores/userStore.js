@@ -43,7 +43,6 @@ export const useUserStore = defineStore('user', {
           },
         });
         console.log(res.data, '新增待辦事項成功');
-        addTodoItem = ''; // 清空輸入框
         this.fetchTodos();
       } catch (error) {
         console.error("新增待辦事項失敗", error);
