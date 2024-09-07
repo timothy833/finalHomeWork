@@ -111,6 +111,7 @@ const signUp = async () => {
 
 .container {
   margin: 0 auto;
+  padding: 0 10px;
   min-height: 100vh; /* 保證容器至少佔滿整個螢幕的高度 */
 }
 
@@ -131,9 +132,9 @@ const signUp = async () => {
     margin-bottom: 20px;
   }
   .container {
-    padding: 18px 32px;
+    /* padding: 18px 32px; */
     width: 100%;
-    min-height: 100%;
+    height: 100%;
   }
 
   .signUpPage {
@@ -153,6 +154,7 @@ const signUp = async () => {
 
 .logoImg {
   margin-bottom: 16px;
+  padding: 10px;
 }
 
 @media (max-width: 576px) {

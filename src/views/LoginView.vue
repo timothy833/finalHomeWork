@@ -92,14 +92,20 @@ const handleSignIn = async () => {
 
 .container {
   margin: 0 auto;
-  padding: 87px 32px;
-  /* padding: 40px 20px;  */
+  /* padding: 87px 32px; */
+  padding: 0 10px; 
+  width: 100%;
 }
 
 @media (max-width: 576px) {
   .container {
-    padding: 18px 32px;
-    max-width: 100%;
+    width: 100%;
+  }
+
+  .side {
+    width: 100%; /* 在小螢幕上讓 side 區塊佔滿寬度 */
+    max-width: 100%; /* 確保不超出螢幕 */
+    margin-bottom: 20px;
   }
 
   .loginPage {
@@ -112,14 +118,7 @@ const handleSignIn = async () => {
 
 
 .loginPage {
-  /* display: -webkit-box;
-  display: -ms-flexbox; */
   display: flex;
-  /* -webkit-box-pack: justify;
-      -ms-flex-pack: justify; */
-          /* justify-content: space-between; */
-  /* -webkit-box-align: center;
-      -ms-flex-align: center; */
   align-items: center;
   justify-content: center;
 }
@@ -130,22 +129,11 @@ const handleSignIn = async () => {
 
 .side {
   width: 386px;
-  /* display: flex; */
-  /* -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column; */
-          /* flex-direction: column; */
-  /* -webkit-box-pack: center;
-      -ms-flex-pack: center; */
-          /* justify-content: center; */
-  /* -webkit-box-align: center;
-      -ms-flex-align: center; */
-          /* align-items: center; */
 }
 
 .logoImg {
   margin-bottom: 16px;
-  padding: 0 10px;
+  /* padding: 0 10px; */
 }
 
 
@@ -158,13 +146,8 @@ const handleSignIn = async () => {
 
 .formControls {
   margin-left: 100px;
-  /* display: -webkit-box;
-  display: -ms-flexbox; */
   display: flex;
-  /* -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column; */
-          flex-direction: column;
+  flex-direction: column;
 }
 
 @media (max-width: 576px) {
@@ -211,15 +194,13 @@ const handleSignIn = async () => {
 
 .formControls .formControls_btnSubmit {
   width: 128px;
-  /* width: 80%; */
+
   height: 48px;
   border: none;
   border-radius: 10px;
   background: #333333;
   color: #fff;
-  /* -ms-flex-item-align: center;
-      -ms-grid-row-align: center; */
-      align-self: center;
+  align-self: center;
   margin: 24px 0;
   font-weight: bold;
   cursor: pointer;
