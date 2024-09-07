@@ -2,21 +2,21 @@
 <div id="loginPage" class="bg-yellow">
     <div class="container loginPage vhContainer">
     <div class="side">
-        <a href="#"><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></a>
+        <img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo">
         <img class="d-m-n" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/img.png" alt="Work Image">
     </div>
     <div>
         <form class="formControls" @submit.prevent="handleSignIn">
-        <h2 class="formControls_txt">最實用的線上代辦事項服務</h2>
-        <label class="formControls_label" for="loginEmail">Email</label>
-        <input v-model="signInEmail" class="formControls_input" type="email" id="loginEmail" name="email" placeholder="請輸入 email" required>
-        <span v-if="loginError">請輸入正確Email</span>
-        
-        <label class="formControls_label" for="loginPwd">密碼</label>
-        <input v-model="signInPassword" class="formControls_input" type="password" name="pwd" id="loginPwd" placeholder="請輸入密碼" required>
-        <span v-if="loginError">請輸入正確密碼</span>
-        <input class="formControls_btnSubmit" type="submit" value="登入">
-        <router-link class="formControls_btnLink" to="/signup">註冊帳號</router-link>
+          <h2 class="formControls_txt">最實用的線上代辦事項服務</h2>
+          <label class="formControls_label" for="loginEmail">Email</label>
+          <input v-model="signInEmail" class="formControls_input" type="email" id="loginEmail" name="email" placeholder="請輸入 email" required>
+          <span v-if="loginError">請輸入正確Email</span>
+          
+          <label class="formControls_label" for="loginPwd">密碼</label>
+          <input v-model="signInPassword" class="formControls_input" type="password" name="pwd" id="loginPwd" placeholder="請輸入密碼" required>
+          <span v-if="loginError">請輸入正確密碼</span>
+          <input class="formControls_btnSubmit" type="submit" value="登入">
+          <router-link class="formControls_btnLink" to="/signup">註冊帳號</router-link>
         </form>
     </div>
     </div>
@@ -145,6 +145,7 @@ const handleSignIn = async () => {
 
 .logoImg {
   margin-bottom: 16px;
+  padding: 0 10px;
 }
 
 

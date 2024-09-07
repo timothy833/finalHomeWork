@@ -1,12 +1,11 @@
 <template>
 <div id="todoListPage" class="bg-half">
     <nav>
-    <h1><a href="#">ONLINE TODO LIST</a></h1>
-    <ul>
-        <li><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></li>
-        <li class="todo_sm"><span>{{ store.userName }}</span></li>
-        <li><a href="#" @click.prevent="signOut">登出</a></li>
-    </ul>
+      <ul>
+          <li><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></li>
+          <li class="todo_sm"><span>{{ store.userName }}</span></li>
+          <li><a @click.prevent="signOut">登出</a></li>
+      </ul>
     </nav>
     <div class="container todoListPage vhContainer">
     <div class="todoList_Content">
@@ -19,9 +18,9 @@
         </div>
         <div class="todoList_list">
         <ul class="todoList_tab">
-            <li><a href="#" @click.prevent="change = 'all'" :class="{ active: change === 'all' }">全部</a></li>
-            <li><a href="#" @click.prevent="change = 'pending'" :class="{ active: change === 'pending' }">待完成</a></li>
-            <li><a href="#" @click.prevent="change = 'completed'" :class="{ active: change === 'completed' }">已完成</a></li>
+            <li><a  @click.prevent="change = 'all'" :class="{ active: change === 'all' }">全部</a></li>
+            <li><a  @click.prevent="change = 'pending'" :class="{ active: change === 'pending' }">待完成</a></li>
+            <li><a  @click.prevent="change = 'completed'" :class="{ active: change === 'completed' }">已完成</a></li>
         </ul>
 
         <div v-if="store.todos.length === 0" class="empty-message">
@@ -130,8 +129,10 @@ const toggleEditing = (todo) => {
   background-image: linear-gradient(175deg, #FFD370 60%, #fff 40%);
 }
 
+
+
+
 .logoImg {
-  margin-bottom: 16px;
   position: absolute;
   margin: 25px;
   top: 0;
@@ -156,14 +157,11 @@ const toggleEditing = (todo) => {
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  /* display: flex;
+  justify-content:flex-end; */
   padding: 24px 32px 0 32px;
 }
+
 
 @media (max-width: 576px) {
   nav {
@@ -171,26 +169,15 @@ nav {
   }
 }
 
-nav h1 a {
-  width: 243px;
-  height: 39px;
-  background: url(https://upload.cc/i1/2022/03/23/8vTzYG.png) no-repeat;
-  display: block;
-  text-indent: 101%;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
+  justify-content: flex-end;
   font-size: 1rem;
 }
 
 @media (max-width: 576px) {
   nav ul li {
-    margin-top: 11px;
+    margin-top: 1px;
   }
 }
 
@@ -203,7 +190,17 @@ nav ul a {
 @media (max-width: 576px) {
   nav ul a {
     margin-left: 0;
+    position: relative;
+    right: -1rem;
   }
+
+  .logoImg {
+  margin: 1rem;
+  top: 0;
+  left: 0;;
+  width: 250px;
+  height: auto;
+}
 }
 
 nav ul a:hover {
@@ -234,7 +231,7 @@ nav ul a span {
 
 .todoList_Content {
   width: 500px;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 @media (max-width: 576px) {
@@ -245,13 +242,10 @@ nav ul a span {
 
 .inputBox {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   margin-bottom: 16px;
-  -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .inputBox input {
@@ -284,18 +278,13 @@ nav ul a span {
 .todoList_list {
   background: #fff;
   border-radius: 10px;
-  -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
   margin-bottom: 5px;
 }
 
 .todoList_list .todoList_tab {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .todoList_list .todoList_tab li {
@@ -338,12 +327,8 @@ nav ul a span {
 
 .todoList_list .todoList_items .todoList_label {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 15px;
   color: #333333;
@@ -395,24 +380,16 @@ nav ul a span {
 }
 
 .todoList_list .todoList_items li {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-bottom: 17px;
 }
 
 
 
 .todoList_list .todoList_statistics {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .todoList_list .todoList_statistics p {

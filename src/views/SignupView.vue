@@ -2,29 +2,29 @@
 <div id="signUpPage" class="bg-yellow">
     <div class="container signUpPage vhContainer">
     <div class="side">
-        <a href="#"><img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo"></a>
+        <img class="logoImg" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/logo.png" alt="Logo">
         <img class="d-m-n" src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/todolist/img.png" alt="Work Image">
     </div>
     <div>
         <form class="formControls" @submit.prevent="submitForm">
-        <h2 class="formControls_txt">註冊帳號</h2>
-        <label class="formControls_label" for="signUpEmail">Email</label>
-        <input v-model="signUpEmail" class="formControls_input" type="email" id="signUpEmail" name="email" placeholder="請輸入 email" required>
-        <span v-if="emailError">帳號已被註冊</span>
-        
-        <label class="formControls_label" for="signUpNickname">您的暱稱</label>
-        <input v-model="signUpNickname" class="formControls_input" type="text" id="signUpNickname" name="name" placeholder="請輸入您的暱稱">
-        
-        <label class="formControls_label" for="signUpPassword">密碼</label>
-        <input v-model="signUpPassword" @input="validatePassword" class="formControls_input" type="password" name="pwd" id="signUpPassword" placeholder="請輸入密碼" required>
-        <span v-if="passwordError">密碼長度太短</span>
-        
-        <label class="formControls_label" for="confirmPassword">再次輸入密碼</label>
-        <input v-model="confirmPassword"  @input="validateConfirmPassword"  class="formControls_input" type="password" name="confirm_pwd" id="confirmPassword" placeholder="請再次輸入密碼" required>
-        <span v-if="confirmPasswordError">密碼長度太短</span>
-        
-        <input class="formControls_btnSubmit" type="submit" value="註冊帳號">
-        <router-link class="formControls_btnLink" to="/">登入</router-link>
+          <h2 class="formControls_txt">註冊帳號</h2>
+          <label class="formControls_label" for="signUpEmail">Email</label>
+          <input v-model="signUpEmail" class="formControls_input" type="email" id="signUpEmail" name="email" placeholder="請輸入 email" required>
+          <span v-if="emailError">帳號已被註冊</span>
+          
+          <label class="formControls_label" for="signUpNickname">您的暱稱</label>
+          <input v-model="signUpNickname" class="formControls_input" type="text" id="signUpNickname" name="name" placeholder="請輸入您的暱稱">
+          
+          <label class="formControls_label" for="signUpPassword">密碼</label>
+          <input v-model="signUpPassword" @input="validatePassword" class="formControls_input" type="password" name="pwd" id="signUpPassword" placeholder="請輸入密碼" required>
+          <span v-if="passwordError">密碼長度太短</span>
+          
+          <label class="formControls_label" for="confirmPassword">再次輸入密碼</label>
+          <input v-model="confirmPassword"  @input="validateConfirmPassword"  class="formControls_input" type="password" name="confirm_pwd" id="confirmPassword" placeholder="請再次輸入密碼" required>
+          <span v-if="confirmPasswordError">密碼長度太短</span>
+          
+          <input class="formControls_btnSubmit" type="submit" value="註冊帳號">
+          <router-link class="formControls_btnLink" to="/">登入</router-link>
         </form>
     </div>
     </div>
