@@ -35,7 +35,7 @@
                 <input  v-if="change === 'all'" class="todoList_input" type="checkbox" :checked="todo.status" @change="toggle(todo.id)">
                 <span>{{ todo.content }}</span>
                 <!-- 刪除待辦事項 -->
-                <a href="#"  v-if="change === 'all'" @click.prevent="deleteTodo(todo.id)">
+                <a  v-if="change === 'all'" @click.prevent="deleteTodo(todo.id)">
                     刪除
                 </a>
                 </label>
@@ -238,6 +238,10 @@ nav ul a span {
   .todoList_Content {
     width: 100%;
   }
+
+  .editBox input{
+    width: 65%;
+  }    
 }
 
 .inputBox {
@@ -375,7 +379,6 @@ nav ul a span {
 .todoList_list .todoList_items .todoList_input:checked ~ span {
   color: #9F9A91;
   text-decoration: line-through;
-  -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
@@ -406,10 +409,9 @@ nav ul a span {
 .editBox {
   display: flex;
   align-items: center;
-  justify-content:  flex-start;
+  justify-content: space-between;
   margin-left: 10px;
-  gap: 10px; 
-  flex-grow: 0; 
+  gap: 5px; 
   margin-left: 2.1rem; 
   margin-top: 5px;
 }
@@ -419,15 +421,16 @@ nav ul a span {
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 4px 6px;
   cursor: pointer;
   margin-top: 5px;
+  white-space: nowrap;
 
 }
 
 .editBox input {
-  flex-grow: 1; /* 讓輸入框填滿剩餘空間 */
-  padding: 8px;
+
+  padding: 4px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-top: 5px;
